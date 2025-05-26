@@ -1,6 +1,10 @@
 from collections import deque
+import re
 
 def is_palindrome(s):
+    # Normalize: remove non-alphanumeric characters and convert to lowercase
+    s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+
     stack = []
     queue = deque()
 
@@ -13,11 +17,3 @@ def is_palindrome(s):
             return False
 
     return True
-
-
-s = input("Enter a word: ")
-
-if is_palindrome(s):
-    print(f"The word, {s}, is a palindrome.")
-else:
-    print(f"The word, {s}, is not a palindrome.")
